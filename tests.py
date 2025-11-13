@@ -6,7 +6,7 @@ class TestAllocationLogic(unittest.TestCase):
 
     def test_basic_proportionality(self):
         """
-        Case 1: The Happy Flow
+        Case 1:
         Scenario: Requests are round, approved amount is round and divisible.
         Expectation: Perfect proportional split.
         """
@@ -25,7 +25,7 @@ class TestAllocationLogic(unittest.TestCase):
 
     def test_chunk_optimization(self):
         """
-        Case 2: The "Chunking" Logic (The core requirement)
+        Case 2: The "Chunking" Logic
         Scenario: A(200), B(200). Approved 300.
         Math split: 150 each.
         Logic split: One gets 200, the other 100 (to maximize 100-blocks).
@@ -36,9 +36,8 @@ class TestAllocationLogic(unittest.TestCase):
             {'client': 'ClientB', 'amount': 200}
         ]
         result = distribute_logic(reqs, 300)
-
         values = list(result.values())
-        # Verify we didn't get 150/150
+
         self.assertIn(200, values)
         self.assertIn(100, values)
         self.assertEqual(sum(values), 300)
@@ -90,12 +89,12 @@ class TestAllocationLogic(unittest.TestCase):
     def test_over_approval_guardrail(self):
         """
         Case 5: Server Bug (Over-approval)
-        Scenario: Server approves MORE than requested.
+        Scenario: Server approves more than requested.
         Expectation: Cap at requested amount. Don't invent shares.
         """
         print("\n--- Test 5: Over Approval Guardrail ---")
         reqs = [{'client': 'ClientA', 'amount': 100}]
-        # Server goes crazy and approves 500
+        # Server approves 500 (more than requested)
         result = distribute_logic(reqs, 500)
 
         self.assertEqual(result['ClientA'], 100)
@@ -103,7 +102,7 @@ class TestAllocationLogic(unittest.TestCase):
 
     def test_complex_fairness(self):
         """
-        Case 6: The Tie Breaker
+        Case 6: Tie Breaker
         Scenario: A(500), B(400). Total 900. Approved 600.
         Math: A=333.3, B=266.6.
         Base: A=300, B=200. (Total 500). Left 100.
@@ -140,7 +139,7 @@ class TestAllocationLogic(unittest.TestCase):
 
     def test_micro_requests(self):
         """
-        Case 8: The "No Chunks" World
+        Case 8: No Chunks
         Scenario: All requests are small (<100).
         Reqs: A(50), B(40), C(30). Total 120. Approved 60.
         Math: A=25, B=20, C=15.
