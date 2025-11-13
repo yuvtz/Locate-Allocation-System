@@ -6,7 +6,7 @@ The system aggregates client locate requests, queries an external approval serve
 ## Features
 
 ### Client–Server Architecture
-Simulates interaction with an external liquidity provider (mock broker). The server introduces volatility by **randomizing approval rates (50%–120%)**, forcing the client to handle both scarcity and over-supply scenarios.
+Simulates interaction with an external liquidity provider (mock broker). The server introduces volatility by **randomizing approval rates (0%–200%)**, forcing the client to handle both scarcity and over-supply scenarios.
 
 ### Smart Allocation Algorithm
 A multi-pass algorithm designed for fairness and efficiency:
