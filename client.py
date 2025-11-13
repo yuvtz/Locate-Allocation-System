@@ -10,7 +10,6 @@ SERVER_URL = "http://127.0.0.1:8000/request_locates"
 INPUT_FILE = "requests.csv"
 OUTPUT_FILE = "approved_locates.csv"
 
-
 def distribute_logic(requests_list: List[dict], approved_amount: int) -> Dict[str, int]:
     """
     Core Allocation Logic:
