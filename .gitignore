@@ -10,5 +10,5 @@ venv/
 env/
 .env
 
-# Output files (We don't want to track the result file)
+# Output files (don't track the result file)
 approved_locates.csv
