@@ -33,7 +33,7 @@ A multi-pass algorithm designed for fairness and efficiency:
 ## File Descriptions
 
 - **server.py**
-  A FastAPI server simulating a liquidity provider. It randomly approves between **50% and 120%** of requested amounts to test the client's "Guardrail" logic and scarcity handling.
+  A FastAPI server simulating a liquidity provider. It randomly approves between **0% and 200%** of requested amounts to test the client's "Guardrail" logic and scarcity handling.
 
 - **client.py**
   The core application logic:
