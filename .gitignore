@@ -1,0 +1,14 @@
+# PyCharm files
+.idea/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+env/
+.env
+
+# Output files (We don't want to track the result file)
+approved_locates.csv
